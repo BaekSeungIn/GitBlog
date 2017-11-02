@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	var httpRequest = null;
+	
+	function requestMsg() {
+
+		if (window.XMLHttpRequest) {
+			httpRequest = new XMLHttpRequest();
+		} else if (window.ActiveXObject) {
+			httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+		} else
+			httpRequest = null;
+
+	httpRequest.onreadystatechange = responseMsg;
+	
+	httpRequest.open("GET","text",true);
+	httpRequest.send(null);
+	}
+
+	function responseMsg(){
+		if(httpRequest.readyState == 4){
+			if(httpRequest.status == 200){
+				
+				var msgView = document.getElementById("d");
+				msgView.innerHTML = httpRequest.responseText;
+			}
+		}
+	}
+	
+</script>
+
+</head>
+<body>
+	<h2>서버에서 받을 메세지 라는데..</h2>
+	<div id="d" style="border: 1px solid red; width: 200px">여기로 받으면
+		될듯..</div>
+	<input type="button" value="이거 누르면 받을껄?" onclick="requestMsg()" />
+</body>
+</html>

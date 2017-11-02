@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src = "js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+/* $(function(){
+$("#text").load("text");
+}); */
+
+$.ajax({
+	url:"ajax.html", // 여기 url을 연다.
+	success:function(result){ // url을 찾기를 성공하면,
+		$("#text").text(result); // id가 text인 것을 뿌려준다.
+	}
+}) 
+</script>
+
+</head>
+<body>
+<div id="text">내용</div>
+바꿔달래 ㅠㅠㅠㅠㅠㅠㅠ
+</body>
+
+</html>
+
